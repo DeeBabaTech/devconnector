@@ -15,7 +15,7 @@ function Profiles() {
 
   useEffect(() => {
     dispatch(getProfiles());
-  }, []);
+  }, [dispatch]);
   return (
     <div className='container'>
       <Fragment>
