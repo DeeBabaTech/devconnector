@@ -8,7 +8,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix deebaba",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm i"
+    "build": "npm install"
   },
   "author": "DeeBaba",
   "license": "MIT",
