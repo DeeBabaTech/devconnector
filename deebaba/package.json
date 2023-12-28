@@ -47,7 +47,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://developers-forum.onrender.com",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }

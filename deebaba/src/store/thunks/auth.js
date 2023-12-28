@@ -14,7 +14,9 @@ export const loadUser = createAsyncThunk(
     }
 
     try {
-      const res = await axios.get("/api/auth");
+      const res = await axios.get(
+        "https://developers-forum.onrender.com/api/auth"
+      );
       thunkAPI.dispatch(authSuccess());
       return res.data;
     } catch (err) {
@@ -38,7 +40,11 @@ export const register = createAsyncThunk(
     const body = JSON.stringify({ name, email, password });
 
     try {
-      const response = await axios.post("/api/users", body, config);
+      const response = await axios.post(
+        "https://developers-forum.onrender.com/api/users",
+        body,
+        config
+      );
       thunkAPI.dispatch(
         setAlert({ msg: "Registered successfully", alertType: "success" })
       );
@@ -74,7 +80,11 @@ export const login = createAsyncThunk("auth/login", async (res, thunkAPI) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const response = await axios.post("/api/auth", body, config);
+    const response = await axios.post(
+      "https://developers-forum.onrender.com/api/auth",
+      body,
+      config
+    );
     thunkAPI.dispatch(authSuccess());
     // To be removed upon deployment
     setTimeout(() => {
