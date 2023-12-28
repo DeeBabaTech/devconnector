@@ -8,7 +8,9 @@ export const getCurrentProfile = createAsyncThunk(
   "profile/getCurrentProfile",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get("/api/profile/me");
+      const res = await axios.get(
+        "https://developers-forum.onrender.com/api/profile/me"
+      );
       // thunkAPI.dispatch(loadUser());
       return res.data;
     } catch (err) {
@@ -29,7 +31,9 @@ export const getProfiles = createAsyncThunk(
   async (_, thunkAPI) => {
     thunkAPI.dispatch(clearProfile());
     try {
-      const res = await axios.get("/api/profile");
+      const res = await axios.get(
+        "https://developers-forum.onrender.com/api/profile"
+      );
       return res.data;
     } catch (err) {
       // thunkAPI.dispatch(clearProfile());
@@ -48,7 +52,9 @@ export const getProfileById = createAsyncThunk(
   "profile/getProfileById",
   async (userID, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/profile/user/${userID}`);
+      const res = await axios.get(
+        `https://developers-forum.onrender.com/api/profile/user/${userID}`
+      );
       return res.data;
     } catch (err) {
       // thunkAPI.dispatch(clearProfile());
@@ -67,7 +73,9 @@ export const getGithubRepos = createAsyncThunk(
   "profile/getGithubRepos",
   async (username, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/profile/github/${username}`);
+      const res = await axios.get(
+        `https://developers-forum.onrender.com/api/profile/github/${username}`
+      );
       return res.data;
     } catch (err) {
       thunkAPI.dispatch(
@@ -92,7 +100,11 @@ export const createProfile = createAsyncThunk(
         },
       };
 
-      const response = await axios.post("/api/profile", formData, config);
+      const response = await axios.post(
+        "https://developers-forum.onrender.com/api/profile",
+        formData,
+        config
+      );
 
       thunkAPI.dispatch(
         setAlert(
@@ -139,7 +151,7 @@ export const addExperience = createAsyncThunk(
       };
 
       const response = await axios.put(
-        "/api/profile/experience",
+        "https://developers-forum.onrender.com/api/profile/experience",
         formData,
         config
       );
@@ -183,7 +195,7 @@ export const addEducation = createAsyncThunk(
       };
 
       const response = await axios.put(
-        "/api/profile/education",
+        "https://developers-forum.onrender.com/api/profile/education",
         formData,
         config
       );
@@ -219,7 +231,9 @@ export const deleteExperience = createAsyncThunk(
   "profile/deleteExperience",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.delete(`/api/profile/experience/${id}`);
+      const res = await axios.delete(
+        `https://developers-forum.onrender.com/api/profile/experience/${id}`
+      );
       thunkAPI.dispatch(
         setAlert({ msg: "Experience Removed", alertType: "success" })
       );
@@ -240,7 +254,9 @@ export const deleteEducation = createAsyncThunk(
   "profile/deleteEducation",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.delete(`/api/profile/education/${id}`);
+      const res = await axios.delete(
+        `https://developers-forum.onrender.com/api/profile/education/${id}`
+      );
       thunkAPI.dispatch(
         setAlert({ msg: "Education Removed", alertType: "success" })
       );
@@ -262,7 +278,9 @@ export const deleteAccount = createAsyncThunk(
   async (_, thunkAPI) => {
     if (window.confirm("Are you sure? This can NOT be undone"))
       try {
-        const res = await axios.delete("/api/profile");
+        const res = await axios.delete(
+          "https://developers-forum.onrender.com/api/profile"
+        );
         thunkAPI.dispatch(clearProfile());
         thunkAPI.dispatch(authError());
         thunkAPI.dispatch(

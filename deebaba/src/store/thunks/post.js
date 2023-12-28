@@ -8,7 +8,9 @@ export const getPosts = createAsyncThunk(
   "post/getPosts",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get("/api/posts");
+      const res = await axios.get(
+        "https://developers-forum.onrender.com/api/posts"
+      );
       return res.data;
     } catch (err) {
       thunkAPI.dispatch(
@@ -26,7 +28,9 @@ export const addLike = createAsyncThunk(
   "post/addLike",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.put(`/api/posts/like/${id}`);
+      const res = await axios.put(
+        `https://developers-forum.onrender.com/api/posts/like/${id}`
+      );
       return { id, likes: res.data };
     } catch (err) {
       thunkAPI.dispatch(
@@ -44,7 +48,9 @@ export const removeLike = createAsyncThunk(
   "post/removeLike",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.put(`/api/posts/unlike/${id}`);
+      const res = await axios.put(
+        `https://developers-forum.onrender.com/api/posts/unlike/${id}`
+      );
       return { id, likes: res.data };
     } catch (err) {
       thunkAPI.dispatch(
@@ -109,7 +115,9 @@ export const getPost = createAsyncThunk(
   "post/getPost",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/posts/${id}`);
+      const res = await axios.get(
+        `https://developers-forum.onrender.com/api/posts/${id}`
+      );
       return res.data;
     } catch (err) {
       thunkAPI.dispatch(
@@ -134,7 +142,7 @@ export const addComment = createAsyncThunk(
     };
     try {
       const res = await axios.post(
-        `/api/posts/comment/${id}`,
+        `https://developers-forum.onrender.com/api/posts/comment/${id}`,
         { text },
         config
       );
@@ -160,7 +168,9 @@ export const deleteComment = createAsyncThunk(
   async (res, thunkAPI) => {
     const { postId, _id } = res;
     try {
-      await axios.delete(`/api/posts/comment/${postId}/${_id}`);
+      await axios.delete(
+        `https://developers-forum.onrender.com/api/posts/comment/${postId}/${_id}`
+      );
       thunkAPI.dispatch(
         setAlert({ msg: "Comment Removed", alertType: "danger" })
       );
