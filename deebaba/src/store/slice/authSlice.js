@@ -6,13 +6,13 @@ const authSlice = createSlice({
   initialState: {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
-    loading: true,
+    loading: false,
     user: null,
   },
   reducers: {
     authError: (state) => {
-      // localStorage.removeItem("token");
-      state.user = null
+      state.token = null;
+      state.user = null;
       state.isAuthenticated = false;
     },
     authSuccess: (state) => {
@@ -22,14 +22,18 @@ const authSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(register.fulfilled, (state, action) => {
-      localStorage.setItem("token", action.payload);
-      state.loading = false;
+    builder.addCase(loadUser.pending, (state, action) => {
+      state.loading = true;
     });
 
     builder.addCase(loadUser.fulfilled, (state, action) => {
-      state.loading = false;
       state.user = action.payload;
+      state.loading = false;
+    });
+
+    builder.addCase(register.fulfilled, (state, action) => {
+      localStorage.setItem("token", action.payload);
+      state.loading = false;
     });
 
     builder.addCase(login.fulfilled, (state, action) => {

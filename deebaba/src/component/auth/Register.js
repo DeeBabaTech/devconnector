@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { register, setAlert } from "../../store";
 import Alert from "../layout/alert";
+import Spinner from "../layout/Spinner";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ function Register() {
     }
   };
 
-  const { isAuthenticated } = useSelector((state) => {
+  const { loading, isAuthenticated } = useSelector((state) => {
     return state.auth;
   });
 
@@ -41,7 +42,9 @@ function Register() {
     return navigate("/dashboard");
   }
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <section className='container'>
         <Alert />

@@ -5,6 +5,7 @@ import Alert from "../layout/alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { login } from "../../store";
+import Spinner from "../layout/Spinner";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function Login() {
 
   const dispatch = useDispatch();
 
-  const { isAuthenticated } = useSelector((state) => {
+  const { loading, isAuthenticated } = useSelector((state) => {
     return state.auth;
   });
 
@@ -30,10 +31,12 @@ function Login() {
   };
 
   if (isAuthenticated) {
-    return <Navigate to='/dashboard' />
+    return <Navigate to='/dashboard' />;
   }
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <section className='container'>
         <Alert />

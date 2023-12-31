@@ -114,9 +114,9 @@ export const createProfile = createAsyncThunk(
         )
       );
 
-      if (!edit) {
+      // if (!edit) {
         navigate("/dashboard");
-      }
+      // }
 
       return response.data;
     } catch (err) {

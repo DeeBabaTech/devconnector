@@ -12,7 +12,6 @@ export const loadUser = createAsyncThunk(
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-
     try {
       const res = await axios.get(
         "https://developers-forum.onrender.com/api/auth"
@@ -48,10 +47,9 @@ export const register = createAsyncThunk(
       thunkAPI.dispatch(
         setAlert({ msg: "Registered successfully", alertType: "success" })
       );
-      thunkAPI.dispatch(authSuccess());
-      // To be removed upon deployment
       setTimeout(() => {
         thunkAPI.dispatch(loadUser());
+        thunkAPI.dispatch(authSuccess());
       }, 2000);
       return response.data.token;
     } catch (err) {
@@ -85,10 +83,9 @@ export const login = createAsyncThunk("auth/login", async (res, thunkAPI) => {
       body,
       config
     );
-    thunkAPI.dispatch(authSuccess());
-    // To be removed upon deployment
     setTimeout(() => {
       thunkAPI.dispatch(loadUser());
+      thunkAPI.dispatch(authSuccess());
     }, 2000);
     return response.data.token;
   } catch (err) {

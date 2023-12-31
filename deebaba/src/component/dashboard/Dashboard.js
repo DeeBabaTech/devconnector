@@ -13,9 +13,7 @@ import Education from "./Education";
 function Dashboard() {
   const dispatch = useDispatch();
   useEffect(() => {
-    setTimeout(() => {
       dispatch(getCurrentProfile());
-    }, 5000);
   }, [dispatch]);
 
   const { loading, profile } = useSelector((state) => {
