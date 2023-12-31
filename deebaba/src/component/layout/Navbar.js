@@ -53,7 +53,7 @@ function Navbar() {
     <nav className='navbar bg-dark'>
       <h1>
         <Link to='/'>
-          <FontAwesomeIcon icon={faCode} /> DevConnector
+          <FontAwesomeIcon icon={faCode} /> Developers Forum
         </Link>
       </h1>
       {!loading && (
