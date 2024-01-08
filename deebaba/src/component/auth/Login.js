@@ -34,9 +34,7 @@ function Login() {
     return <Navigate to='/dashboard' />;
   }
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <Fragment>
       <section className='container'>
         <Alert />
@@ -63,7 +61,12 @@ function Login() {
               onChange={handleChange}
             />
           </div>
-          <input type='submit' className='btn btn-primary' value='Login' />
+
+          {loading ? (
+            <Spinner />
+          ) : (
+            <input type='submit' className='btn btn-primary' value='Login' />
+          )}
         </form>
         <p className='my-1'>
           Don't have an account? <Link to='/register'>Sign Up</Link>

@@ -4,7 +4,7 @@ import React from "react";
 
 function Spinner() {
   return (
-    <div className='my-spinner'>
+    <div className='my-spinner flex'>
       <FontAwesomeIcon icon={faSpinner} size='2xl' spin />
     </div>
   );
