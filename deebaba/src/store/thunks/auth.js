@@ -83,6 +83,7 @@ export const login = createAsyncThunk("auth/login", async (res, thunkAPI) => {
       body,
       config
     );
+    thunkAPI.dispatch(setAlert({ msg: "Logged in...", alertType: "success" }));
     setTimeout(() => {
       thunkAPI.dispatch(loadUser());
       thunkAPI.dispatch(authSuccess());

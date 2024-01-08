@@ -126,14 +126,11 @@ img {
   margin: 3rem 0;
 }
 
-.flex {
-  display: flex;
-  width: fit-content;
-}
 .my-spinner {
+  display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .btn {

@@ -13,7 +13,7 @@ import Education from "./Education";
 function Dashboard() {
   const dispatch = useDispatch();
   useEffect(() => {
-      dispatch(getCurrentProfile());
+    dispatch(getCurrentProfile());
   }, [dispatch]);
 
   const { loading, profile } = useSelector((state) => {
@@ -25,7 +25,9 @@ function Dashboard() {
   });
 
   return loading && profile === null ? (
-    <Spinner />
+    <div className='my-spinner'>
+      <Spinner />
+    </div>
   ) : (
     <Fragment>
       <div className='container'>

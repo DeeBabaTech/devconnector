@@ -28,7 +28,6 @@ function Register() {
       dispatch(
         setAlert({ msg: "Passwords do not match", alertType: "danger" })
       );
-      // console.log(setAlert)
     } else {
       dispatch(register({ name, email, password }));
     }
@@ -42,9 +41,7 @@ function Register() {
     return navigate("/dashboard");
   }
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <Fragment>
       <section className='container'>
         <Alert />
@@ -93,7 +90,11 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <input type='submit' className='btn btn-primary' value='Register' />
+          {loading ? (
+            <Spinner />
+          ) : (
+            <input type='submit' className='btn btn-primary' value='Register' />
+          )}
         </form>
         <p className='my-1'>
           Already have an account? <Link to='/login'>Sign In</Link>

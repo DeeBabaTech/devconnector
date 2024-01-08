@@ -22,7 +22,11 @@ const authSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(login.pending || loadUser.pending, (state, action) => {
+    builder.addCase(login.pending, (state, action) => {
+      state.loading = true;
+    });
+    
+    builder.addCase(register.pending, (state, action) => {
       state.loading = true;
     });
 
