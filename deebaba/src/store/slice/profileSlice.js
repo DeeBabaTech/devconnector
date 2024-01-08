@@ -34,12 +34,9 @@ const profileSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(
-      getCurrentProfile.pending || createProfile.pending,
-      (state, action) => {
-        state.loading = true;
-      }
-    );
+    builder.addCase(getCurrentProfile.pending, (state, action) => {
+      state.loading = true;
+    });
     builder.addCase(getCurrentProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
       state.loading = false;
