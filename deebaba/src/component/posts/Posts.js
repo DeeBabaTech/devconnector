@@ -18,7 +18,9 @@ function Posts() {
     return state.post;
   });
   return loading ? (
-    <Spinner />
+    <div className='my-spinner'>
+      <Spinner />
+    </div>
   ) : (
     <div className='container'>
       <Fragment>

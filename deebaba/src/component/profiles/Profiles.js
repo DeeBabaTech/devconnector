@@ -20,7 +20,9 @@ function Profiles() {
     <div className='container'>
       <Fragment>
         {loading ? (
-          <Spinner />
+          <div className='my-spinner'>
+            <Spinner />
+          </div>
         ) : (
           <Fragment>
             {" "}

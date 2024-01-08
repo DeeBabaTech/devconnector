@@ -27,7 +27,9 @@ function Profile() {
     <div className='container'>
       <Fragment>
         {profile === null || loading ? (
-          <Spinner />
+          <div className='my-spinner'>
+            <Spinner />
+          </div>
         ) : (
           <Fragment>
             <Link to='/profiles' className='btn btn-light'>
@@ -77,7 +79,9 @@ function Profile() {
                   <h2> No education credentials</h2>
                 )}
               </div>
-              {profile.githubusername && <ProfileGithub username={profile.githubusername} />}
+              {profile.githubusername && (
+                <ProfileGithub username={profile.githubusername} />
+              )}
             </div>
           </Fragment>
         )}
